@@ -1,0 +1,680 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Insights sobre os servidores</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="22c96410-28db-801e-9b39-e33554bb4e08" class="page sans"><header><h1 class="page-title">Insights sobre os servidores</h1><p class="page-description"></p></header><div class="page-body"><h3 id="22c96410-28db-8012-a538-d22025f06d03" class="">Visão-geral rápida</h3><table id="22c96410-28db-8007-a99a-fa425a850c47" class="simple-table"><thead class="simple-table-header"><tr id="22c96410-28db-801a-ab02-e834e396002d"><th id="NZP=" class="simple-table-header-color simple-table-header">Métrica-chave</th><th id="CRqA" class="simple-table-header-color simple-table-header">Valor</th><th id="YelF" class="simple-table-header-color simple-table-header">Insight imediato</th></tr></thead><tbody><tr id="22c96410-28db-80f5-8441-e1af415e0cba"><td id="NZP=" class="">Total de servidores na base</td><td id="CRqA" class="">3 216</td><td id="YelF" class="">População significativa – mailing robusto</td></tr><tr id="22c96410-28db-805b-9fcd-e923fa34cf44"><td id="NZP=" class="">Maior segmento</td><td id="CRqA" class="">Educação (46 %)</td><td id="YelF" class="">Professores/monitores precisam de conteúdo e benefícios específicos</td></tr><tr id="22c96410-28db-801b-844d-e14054d2d90d"><td id="NZP=" class="">2º segmento</td><td id="CRqA" class="">Saúde (14 %)</td><td id="YelF" class="">Profissionais normalmente sensíveis a planos e crédito consignado</td></tr><tr id="22c96410-28db-80d8-abb9-e15ac9f5a727"><td id="NZP=" class="">Faixa de tempo de casa &gt; 10 anos</td><td id="CRqA" class="">48 %</td><td id="YelF" class="">Metade tem vínculo longo; apela a benefícios de médio prazo (previdência, empréstimo, clínica)</td></tr><tr id="22c96410-28db-8002-aaa9-e86235083107"><td id="NZP=" class="">Admitidos 2023-25</td><td id="CRqA" class="">931 (29 %)</td><td id="YelF" class="">Quase 1/3 é recém-contratado – público mais digital, aberto a novidades</td></tr><tr id="22c96410-28db-809e-9f97-d684b8a5e426"><td id="NZP=" class="">Gênero (estimado por nome)</td><td id="CRqA" class="">42 % feminino, 14 % masculino, 44 % indef.</td><td id="YelF" class="">Tendência feminina – tom empático, horários compatíveis com dupla jornada</td></tr></tbody></table><h3 id="22c96410-28db-8029-b99c-c79900abd0fd" class="">1. Clusters estratégicos</h3><ol type="1" id="22c96410-28db-80e3-a08c-e977b2f5b32b" class="numbered-list" start="1"><li>Educação (1 488 nomes)<p id="22c96410-28db-804b-9d38-db356e8966e9" class="">• Professores, diretores, monitores, merendeiras.</p><p id="22c96410-28db-8021-9893-e6e87099bdac" class="">• Maior concentração de mulheres e contratos antigos.</p><p id="22c96410-28db-8081-b57a-f7df350eed28" class="">• Temas de interesse: formação continuada, crédito para pós-graduação, clube de vantagens em papelaria/livraria.</p></li></ol><ol type="1" id="22c96410-28db-80ed-a478-e12ccbf79146" class="numbered-list" start="2"><li>Saúde (449)<p id="22c96410-28db-8027-a2bf-f32de016c932" class="">• Médicos, enfermeiros, agentes comunitários.</p><p id="22c96410-28db-80f7-a209-d978be5bde3a" class="">• Alto stress + plantões → soluções financeiras rápidas (consignado, antecipação de FGTS).</p><p id="22c96410-28db-80e2-acee-c3a06736288b" class="">• Parcerias: academias 24 h, planos odontológicos premium.</p></li></ol><ol type="1" id="22c96410-28db-804f-abb9-ed2dd2c21152" class="numbered-list" start="3"><li>Segurança (331)<p id="22c96410-28db-8057-b167-f87dd6cff633" class="">• Guarda Civil, Defesa Civil, Trânsito.</p><p id="22c96410-28db-8082-ab47-cc38289b18d0" class="">• Perfil majoritariamente masculino; valorizam seguros, consignado para compra de armamento/veículo.</p><p id="22c96410-28db-8005-94dc-d4a87451cbae" class="">• Conteúdo: dicas de saúde física, aposentadoria especial.</p></li></ol><ol type="1" id="22c96410-28db-8017-a93e-eac6bb0ec996" class="numbered-list" start="4"><li>Administrativo/Financeiro (356)<p id="22c96410-28db-80d3-82d9-de8a83a874a3" class="">• Analistas, fiscais, contadores.</p><p id="22c96410-28db-8076-ae24-da9f11c932d0" class="">• Maior renda média; atraídos por investimentos e previdência complementar.</p><p id="22c96410-28db-80e3-8ba9-c91ee118b843" class="">• Ferramentas: webinars de educação financeira avançada.</p></li></ol><ol type="1" id="22c96410-28db-80ba-a0e8-f2e1af8b06e6" class="numbered-list" start="5"><li>Demais (Transporte, Meio Ambiente, Obras etc.)<p id="22c96410-28db-809f-b01f-dc3ee3732c45" class="">• Nichos menores mas relevantes para campanhas temáticas (Dia do Motorista, Semana do Meio Ambiente).</p></li></ol><h3 id="22c96410-28db-8010-a686-fdf0533d5c52" class="">2. Jornada digital recomendada</h3><p id="22c96410-28db-806f-b5ca-dd107790c278" class=""><strong>Fase 1 – Awareness</strong></p><p id="22c96410-28db-8049-9db5-d4e59ac30595" class="">• Facebook Ads segmentado por “Cargo público” + interesses (educação, enfermagem, segurança) – efetivo para gerações mais velhas.</p><p id="22c96410-28db-80d1-bd9b-ec48d5f6e16a" class="">• Reels curtos no Instagram (15-30 s) apresentando benefícios da associação – foco nos recém-admitidos (2023-25).</p><p id="22c96410-28db-8014-979e-cfe544441a5f" class=""><strong>Fase 2 – Engajamento</strong></p><p id="22c96410-28db-80e4-8e04-fcd5ac7abab2" class="">• Sequência de Stories (até 5 páginas) com enquetes: “Você já utiliza consignado?”; “Qual benefício gostaria de ver?”.</p><p id="22c96410-28db-80c1-8936-e26c8f867a11" class="">• Newsletter quinzenal segmentada por cluster (educação, saúde, segurança).</p><p id="22c96410-28db-80ee-a832-cdb248939088" class=""><strong>Fase 3 – Conversão</strong></p><p id="22c96410-28db-8036-a5c7-eccc9a653e64" class="">• WhatsApp Business oficial com catálogos de parceiros (ex.: lojas de material escolar).</p><p id="22c96410-28db-80c3-9fef-fef8e5ef70ff" class="">• Landing pages individuais (“/professores”, “/saude”) com CTA: “Associe-se e economize R$ XXX por ano”.</p><h3 id="22c96410-28db-80b8-8686-cefce33f7fde" class="">3. Conteúdos ganhadores</h3><table id="22c96410-28db-8015-80a1-ce6cf2255fe9" class="simple-table"><thead class="simple-table-header"><tr id="22c96410-28db-803e-94aa-f9d7dc67203a"><th id="HWwO" class="simple-table-header-color simple-table-header">Cluster</th><th id="z[Jd" class="simple-table-header-color simple-table-header">Âncora de conteúdo</th><th id="XGZ_" class="simple-table-header-color simple-table-header">Formato sugerido</th></tr></thead><tbody><tr id="22c96410-28db-8095-8b85-e42e15086181"><td id="HWwO" class="">Educação</td><td id="z[Jd" class="">“Kit volta às aulas + crédito educacional”</td><td id="XGZ_" class="">Carrossel 1080×1080</td></tr><tr id="22c96410-28db-800a-97e8-fecfbb031ddc"><td id="HWwO" class="">Saúde</td><td id="z[Jd" class="">“Plantão sem aperto: adiantamento salarial”</td><td id="XGZ_" class="">Reels + link WhatsApp</td></tr><tr id="22c96410-28db-80dd-b40d-f8b44d485a0d"><td id="HWwO" class="">Segurança</td><td id="z[Jd" class="">“Seguro de vida a preço de Guarda”</td><td id="XGZ_" class="">Infográfico vertical</td></tr><tr id="22c96410-28db-807e-ad8b-d7fb017fa566"><td id="HWwO" class="">Admin</td><td id="z[Jd" class="">“Workshop Planejamento de Aposentadoria”</td><td id="XGZ_" class="">Live de 40 min (salvar IGTV)</td></tr></tbody></table><h3 id="22c96410-28db-8058-8d44-f4b100612266" class="">4. Gatilhos de campanha</h3><ol type="1" id="22c96410-28db-8073-8764-e779a65f9a42" class="numbered-list" start="1"><li>Datas comemorativas:<p id="22c96410-28db-8057-bafe-d68727d72dc6" class="">• 15/10 Dia do Professor → campanha “Professor que cuida da cidade, a ASPC cuida de você”.</p><p id="22c96410-28db-804e-835d-d4d0dcae06a3" class="">• 10/08 Dia do Guarda Municipal → combo seguro + clínica popular.</p></li></ol><ol type="1" id="22c96410-28db-8017-b62f-c8eebd9bcc94" class="numbered-list" start="2"><li>Ciclo salarial:<p id="22c96410-28db-80da-9209-d75a1610beee" class="">• Salário cai último dia útil → enviar push/WhatsApp sobre desconto em farmácia/parceiros (efeito “tô com dinheiro na mão”).</p></li></ol><ol type="1" id="22c96410-28db-80bb-9b21-f50ee5942a7d" class="numbered-list" start="3"><li>Onboarding de novos servidores:<p id="22c96410-28db-8029-b5b7-f85c6edd09ca" class="">• Cruzar lista de admitidos do mês (Portal do Servidor) → e-mail “Parabéns pela posse! Como a ASPC pode ajudar”.</p></li></ol><h3 id="22c96410-28db-8099-ba59-d59ea90c4cce" class="">5. Próximos passos de dados</h3><ol type="1" id="22c96410-28db-80ce-8b67-fd429ecbe78c" class="numbered-list" start="1"><li>Completar coluna “Nível Salarial” (está vazia) com importação do Portal da Transparência – permitirá offers por faixa de renda.</li></ol><ol type="1" id="22c96410-28db-80b3-b65b-d21de2458c99" class="numbered-list" start="2"><li>Enriquecer base com e-mails corporativos “@cajamar.sp.gov.br” (muitos departamentos usam).</li></ol><ol type="1" id="22c96410-28db-8016-87f4-f078fa7e84ba" class="numbered-list" start="3"><li>Validar gênero e idade via SINIPS (se permitido) para segmentação demográfica mais precisa.</li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
