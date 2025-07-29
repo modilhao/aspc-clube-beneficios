@@ -19,6 +19,10 @@ export default {
       fontFamily: {
         'raleway': ['Raleway', 'sans-serif'],
       },
+      backgroundImage: {
+        'aspc-gradient': 'linear-gradient(135deg, #3e4095 0%, #ed3237 100%)',
+        'aspc-gradient-hover': 'linear-gradient(135deg, #2d2f6b 0%, #c72529 100%)',
+      },
     },
   },
   plugins: [],

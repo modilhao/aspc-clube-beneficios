@@ -1,122 +1,136 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Button } from '@/components/ui/button.jsx'
-import { DollarSign, Users, Crown, Check } from 'lucide-react'
+import { Calculator, Users, TrendingUp, ArrowRight, Sparkles } from 'lucide-react'
+import PersonaQuiz from './PersonaQuiz'
+import EconomySimulator from './EconomySimulator'
 
-const PersonasSection = () => {
-  const personas = [
-    {
-      id: 'economico',
-      title: 'Servidor Econômico',
-      description: 'Foco em economia no dia a dia e benefícios básicos essenciais',
-      bgColor: 'bg-aspc-primary/10',
-      icon: DollarSign,
-      iconColor: 'text-aspc-primary',
-      buttonColor: 'bg-aspc-primary hover:bg-aspc-primary/90'
-    },
-    {
-      id: 'familiar',
-      title: 'Servidor Familiar',
-      description: 'Benefícios voltados para toda a família, incluindo dependentes',
-      benefits: [
-        'Descontos em farmácias e supermercados',
-        'Planos de saúde com cobertura familiar',
-        'Educação e cursos para filhos',
-        'Lazer e entretenimento em família',
-        'Seguros residenciais e veiculares',
-        'Programas de férias e viagens'
-      ],
-      bgColor: 'bg-aspc-secondary/10',
-      icon: Users,
-      iconColor: 'text-aspc-secondary',
-      buttonColor: 'bg-aspc-secondary hover:bg-aspc-secondary/90'
-    },
-    {
-      id: 'premium',
-      title: 'Servidor Premium',
-      description: 'Benefícios exclusivos e serviços diferenciados de alta qualidade',
-      benefits: [
-        'Consultoria financeira personalizada',
-        'Seguros premium com cobertura ampla',
-        'Experiências VIP e eventos exclusivos',
-        'Consultoria de investimentos',
-        'Seguros com condições especiais',
-        'Networking e desenvolvimento executivo'
-      ],
-      bgColor: 'bg-aspc-primary/20',
-      icon: Crown,
-      iconColor: 'text-aspc-primary',
-      buttonColor: 'bg-aspc-primary hover:bg-aspc-primary/90'
-    }
-  ]
-
+const PersonasSection = ({ onNavigateToPartners }) => {
   return (
-    <section id="beneficios" className="py-20 bg-aspc-light">
+    <section id="beneficios" className="py-20 bg-gradient-to-br from-aspc-light to-aspc-primary/10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-aspc-dark mb-4 font-raleway">
-            Escolha seu Perfil de Benefícios
+            Descubra Seu Perfil de Economia
           </h2>
           <p className="text-xl text-aspc-dark/70 max-w-3xl mx-auto font-raleway">
-            Cada servidor tem necessidades únicas. Descubra qual perfil combina mais com você e sua família.
+            Responda nosso quiz inteligente e descubra exatamente quanto você pode economizar com a ASPC
           </p>
         </div>
 
-        {/* Personas Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
-          {personas.map((persona) => (
-            <Card key={persona.id} className={`${persona.bgColor} border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2`}>
-              <CardHeader className="text-center pb-4">
-                <div className={`w-16 h-16 ${persona.bgColor} rounded-full flex items-center justify-center mx-auto mb-4 shadow-md`}>
-                  <persona.icon className={`h-8 w-8 ${persona.iconColor}`} />
-                </div>
-                <CardTitle className="text-xl font-bold text-aspc-dark font-raleway">
-                  {persona.title}
+        {/* Quiz Principal */}
+        <div className="mb-20">
+          <Card className="bg-aspc-white shadow-xl border-0 overflow-hidden">
+            <CardHeader className="bg-gradient-to-r from-aspc-primary to-aspc-secondary text-aspc-white text-center py-8">
+              <div className="flex items-center justify-center space-x-3 mb-4">
+                <Sparkles className="h-8 w-8" />
+                <CardTitle className="text-2xl lg:text-3xl font-bold font-raleway">
+                  Quiz de Perfil Inteligente
                 </CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="text-aspc-dark/70 text-sm mt-2 mb-6 font-raleway">
-                  {persona.description}
-                </p>
-                
-                {persona.benefits && (
-                  <div className="text-left mb-6">
-                    <h4 className="font-semibold text-aspc-dark mb-3 font-raleway">Principais benefícios:</h4>
-                    <ul className="space-y-2">
-                      {persona.benefits.map((benefit, index) => (
-                        <li key={index} className="flex items-start space-x-2">
-                          <Check className="h-4 w-4 text-aspc-secondary mt-0.5 flex-shrink-0" />
-                          <span className="text-aspc-dark text-sm font-raleway">{benefit}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                
-                <div className="space-y-4">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-aspc-secondary mb-1 font-raleway">R$ 5/mês</div>
-                    <p className="text-aspc-dark/70 mb-6 font-raleway">
-                      Investimento que se paga sozinho
-                    </p>
-                  </div>
-                  <Button variant="outline" size="lg" className="border-aspc-primary text-aspc-primary hover:bg-aspc-primary hover:text-aspc-white font-raleway font-semibold">
-                    Escolher Perfil
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                <Sparkles className="h-8 w-8" />
+              </div>
+              <CardDescription className="text-aspc-white/90 text-lg font-raleway">
+                7 perguntas rápidas para descobrir sua economia personalizada
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="p-8">
+              <PersonaQuiz />
+            </CardContent>
+          </Card>
         </div>
 
-        {/* CTA Section */}
-        <div className="text-center">
-          <p className="text-aspc-dark/70 mb-6 font-raleway">
-            Não tem certeza qual perfil se encaixa melhor com você?
+        {/* Seção de Transição */}
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center space-x-4 mb-8">
+            <div className="h-px bg-aspc-primary/30 flex-1"></div>
+            <div className="bg-aspc-white rounded-full p-3 shadow-md">
+              <ArrowRight className="h-6 w-6 text-aspc-primary" />
+            </div>
+            <div className="h-px bg-aspc-primary/30 flex-1"></div>
+          </div>
+          <h3 className="text-2xl lg:text-3xl font-bold text-aspc-dark mb-4 font-raleway">
+            Quer Calcular com Mais Detalhes?
+          </h3>
+          <p className="text-lg text-aspc-dark/70 max-w-2xl mx-auto font-raleway">
+            Use nossa calculadora avançada para simular cenários específicos e validar sua economia
           </p>
-          <Button variant="outline" size="lg" className="border-aspc-primary text-aspc-primary hover:bg-aspc-primary hover:text-aspc-white font-raleway font-semibold">
-            Fazer quiz de perfil
-          </Button>
+        </div>
+
+        {/* Calculadora Detalhada */}
+        <div className="mb-16">
+          <Card className="bg-aspc-white shadow-lg border-0">
+            <CardHeader className="text-center py-6">
+              <CardTitle className="flex items-center justify-center space-x-2 text-xl font-raleway">
+                <Calculator className="h-6 w-6 text-aspc-primary" />
+                <span>Calculadora Avançada de Economia</span>
+              </CardTitle>
+              <CardDescription className="font-raleway">
+                Selecione os serviços que mais utiliza e veja sua economia detalhada
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <EconomySimulator />
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Stats Section */}
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <Card className="bg-aspc-white shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+            <CardContent className="p-6 text-center">
+              <div className="w-12 h-12 bg-aspc-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Sparkles className="h-6 w-6 text-aspc-primary" />
+              </div>
+              <h3 className="text-lg font-semibold text-aspc-dark mb-2 font-raleway">Quiz Inteligente</h3>
+              <p className="text-aspc-dark/70 text-sm font-raleway">
+                Algoritmo que analisa seus hábitos e calcula sua economia personalizada em minutos
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-aspc-white shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+            <CardContent className="p-6 text-center">
+              <div className="w-12 h-12 bg-aspc-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Calculator className="h-6 w-6 text-aspc-secondary" />
+              </div>
+              <h3 className="text-lg font-semibold text-aspc-dark mb-2 font-raleway">Cálculo Preciso</h3>
+              <p className="text-aspc-dark/70 text-sm font-raleway">
+                Baseado em dados reais de mais de 35 parceiros com descontos comprovados
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-aspc-white shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+            <CardContent className="p-6 text-center">
+              <div className="w-12 h-12 bg-aspc-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="h-6 w-6 text-aspc-primary" />
+              </div>
+              <h3 className="text-lg font-semibold text-aspc-dark mb-2 font-raleway">ROI Garantido</h3>
+              <p className="text-aspc-dark/70 text-sm font-raleway">
+                Veja o retorno sobre investimento da sua associação e o tempo de payback
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* CTA Final */}
+        <div className="text-center">
+          <div className="bg-gradient-to-r from-aspc-primary to-aspc-secondary rounded-lg shadow-xl p-8 max-w-2xl mx-auto text-aspc-white">
+            <h3 className="text-2xl font-bold mb-4 font-raleway">
+              Pronto para Começar a Economizar?
+            </h3>
+            <p className="mb-6 font-raleway opacity-90">
+              Junte-se aos centenas de servidores que já estão aproveitando os benefícios da ASPC
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" variant="gradient" className="font-raleway font-semibold">
+                Quero me Associar
+              </Button>
+              <Button size="lg" variant="outline" className="border-aspc-white text-aspc-white hover:bg-aspc-white hover:text-aspc-primary font-raleway font-semibold">
+                Falar com Consultor
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

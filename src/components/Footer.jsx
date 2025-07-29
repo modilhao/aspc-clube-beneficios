@@ -77,7 +77,7 @@ const Footer = () => {
                 placeholder="Seu e-mail" 
                 className="bg-aspc-dark/50 border-aspc-white/20 text-aspc-white placeholder-aspc-white/50 font-raleway"
               />
-              <Button className="w-full bg-aspc-primary hover:bg-aspc-primary/90 font-raleway font-semibold">
+              <Button variant="gradient" className="w-full font-raleway font-semibold">
                 Inscrever-se
               </Button>
             </div>

@@ -44,7 +44,7 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex">
-            <Button className="bg-aspc-secondary hover:bg-aspc-secondary/90 text-aspc-white font-raleway font-semibold">
+            <Button variant="gradient" className="font-raleway font-semibold">
               Associe-se Agora
             </Button>
           </div>

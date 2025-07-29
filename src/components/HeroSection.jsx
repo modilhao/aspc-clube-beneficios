@@ -22,7 +22,8 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 size="lg" 
-                className="bg-aspc-secondary hover:bg-aspc-secondary/90 text-aspc-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold font-raleway"
+                variant="gradient"
+                className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold font-raleway"
               >
                 Quero me associar
                 <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />

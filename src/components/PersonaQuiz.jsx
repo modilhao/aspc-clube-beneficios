@@ -12,98 +12,123 @@ const PersonaQuiz = () => {
 
   const questions = [
     {
-      id: 'cargo',
-      question: 'Qual é sua área de atuação?',
+      id: 'familia',
+      question: 'Qual é a composição da sua família?',
       options: [
-        { value: 'educacao', label: 'Educação (Professor, Monitor, Diretor)', points: { essencial: 3, estavel: 2, lider: 1 } },
-        { value: 'saude', label: 'Saúde (Enfermeiro, Médico, Agente)', points: { essencial: 2, estavel: 3, lider: 2 } },
-        { value: 'seguranca', label: 'Segurança (Guarda, Defesa Civil)', points: { essencial: 2, estavel: 2, lider: 2 } },
-        { value: 'administrativo', label: 'Administrativo (Analista, Fiscal)', points: { essencial: 1, estavel: 2, lider: 3 } }
+        { value: 'solteiro', label: 'Solteiro(a) sem dependentes', economy: 800 },
+        { value: 'casal', label: 'Casal sem filhos', economy: 1200 },
+        { value: 'familia_pequena', label: 'Família com 1-2 filhos', economy: 1800 },
+        { value: 'familia_grande', label: 'Família com 3+ filhos', economy: 2500 }
       ]
     },
     {
-      id: 'tempo_servico',
-      question: 'Há quanto tempo você trabalha no serviço público?',
+      id: 'idade',
+      question: 'Qual sua faixa etária?',
       options: [
-        { value: 'menos_2', label: 'Menos de 2 anos', points: { essencial: 3, estavel: 1, lider: 0 } },
-        { value: '2_5', label: '2 a 5 anos', points: { essencial: 2, estavel: 2, lider: 1 } },
-        { value: '5_10', label: '5 a 10 anos', points: { essencial: 1, estavel: 3, lider: 2 } },
-        { value: 'mais_10', label: 'Mais de 10 anos', points: { essencial: 0, estavel: 2, lider: 3 } }
+        { value: '20_30', label: '20 a 30 anos', economy: 600 },
+        { value: '31_40', label: '31 a 40 anos', economy: 900 },
+        { value: '41_50', label: '41 a 50 anos', economy: 1200 },
+        { value: '51_mais', label: '51 anos ou mais', economy: 800 }
       ]
     },
     {
-      id: 'salario',
-      question: 'Qual sua faixa salarial atual?',
+      id: 'saude_habitos',
+      question: 'Com que frequência você usa farmácias e serviços de saúde?',
       options: [
-        { value: 'ate_3000', label: 'Até R$ 3.000', points: { essencial: 3, estavel: 1, lider: 0 } },
-        { value: '3001_6500', label: 'R$ 3.001 a R$ 6.500', points: { essencial: 1, estavel: 3, lider: 1 } },
-        { value: 'acima_6500', label: 'Acima de R$ 6.500', points: { essencial: 0, estavel: 1, lider: 3 } }
+        { value: 'raramente', label: 'Raramente (1-2x por ano)', economy: 200 },
+        { value: 'ocasionalmente', label: 'Ocasionalmente (3-6x por ano)', economy: 400 },
+        { value: 'regularmente', label: 'Regularmente (mensalmente)', economy: 600 },
+        { value: 'frequentemente', label: 'Frequentemente (várias vezes por mês)', economy: 900 }
       ]
     },
     {
-      id: 'prioridade',
-      question: 'Qual é sua principal prioridade financeira?',
+      id: 'lazer_habitos',
+      question: 'Quanto você gasta com lazer e entretenimento por mês?',
       options: [
-        { value: 'economia_diaria', label: 'Economizar no dia a dia', points: { essencial: 3, estavel: 1, lider: 0 } },
-        { value: 'planejamento', label: 'Planejamento familiar e educação', points: { essencial: 1, estavel: 3, lider: 1 } },
-        { value: 'investimentos', label: 'Investimentos e crescimento patrimonial', points: { essencial: 0, estavel: 1, lider: 3 } },
-        { value: 'seguranca', label: 'Segurança e estabilidade', points: { essencial: 2, estavel: 2, lider: 2 } }
+        { value: 'pouco', label: 'Até R$ 200/mês', economy: 300 },
+        { value: 'moderado', label: 'R$ 200 a R$ 500/mês', economy: 600 },
+        { value: 'alto', label: 'R$ 500 a R$ 1000/mês', economy: 1000 },
+        { value: 'muito_alto', label: 'Mais de R$ 1000/mês', economy: 1500 }
       ]
     },
     {
-      id: 'beneficios',
-      question: 'Que tipo de benefício mais te interessa?',
+      id: 'educacao_interesse',
+      question: 'Você tem interesse em cursos, graduação ou pós-graduação?',
       options: [
-        { value: 'descontos_basicos', label: 'Descontos em farmácias e supermercados', points: { essencial: 3, estavel: 2, lider: 0 } },
-        { value: 'saude_educacao', label: 'Planos de saúde e cursos', points: { essencial: 1, estavel: 3, lider: 1 } },
-        { value: 'experiencias', label: 'Experiências exclusivas e networking', points: { essencial: 0, estavel: 1, lider: 3 } },
-        { value: 'consultoria', label: 'Consultoria financeira e investimentos', points: { essencial: 0, estavel: 2, lider: 3 } }
+        { value: 'nenhum', label: 'Não tenho interesse no momento', economy: 0 },
+        { value: 'cursos_livres', label: 'Cursos livres e idiomas', economy: 800 },
+        { value: 'graduacao', label: 'Graduação ou segunda graduação', economy: 1500 },
+        { value: 'pos_graduacao', label: 'Pós-graduação ou mestrado', economy: 2000 }
+      ]
+    },
+    {
+      id: 'atividade_fisica',
+      question: 'Você pratica atividades físicas regularmente?',
+      options: [
+        { value: 'nao_pratica', label: 'Não pratico atividades físicas', economy: 0 },
+        { value: 'casa_parque', label: 'Pratico em casa ou parques públicos', economy: 200 },
+        { value: 'academia_eventual', label: 'Academia ou estúdio eventualmente', economy: 500 },
+        { value: 'academia_regular', label: 'Academia, pilates ou crossfit regularmente', economy: 800 }
+      ]
+    },
+    {
+      id: 'consumo_geral',
+      question: 'Como você descreveria seus hábitos de consumo?',
+      options: [
+        { value: 'economico', label: 'Muito econômico, compro apenas o essencial', economy: 400 },
+        { value: 'moderado', label: 'Moderado, compro o necessário com alguns extras', economy: 700 },
+        { value: 'confortavel', label: 'Confortável, gosto de qualidade e conveniência', economy: 1000 },
+        { value: 'premium', label: 'Premium, valorizo experiências e produtos de qualidade', economy: 1300 }
       ]
     }
   ]
 
-  const personas = {
-    essencial: {
-      title: 'Servidor Econômico',
-      subtitle: 'Foco em economia essencial',
-      description: 'Você busca economia no dia a dia e benefícios básicos essenciais. Nossos descontos fundamentais são perfeitos para você!',
-      benefits: [
-        'Descontos de até 25% em farmácias',
-        'Economia de até 15% em supermercados',
-        'Cursos de qualificação com desconto',
-        'Parcerias com papelarias e livrarias'
-      ],
-      color: 'primary',
-      bgColor: 'bg-aspc-primary/10',
-      textColor: 'text-aspc-primary'
-    },
-    estavel: {
-      title: 'Servidor Familiar',
-      subtitle: 'Planejamento familiar e crescimento',
-      description: 'Você tem estabilidade na carreira e foca no planejamento familiar. Nossos benefícios intermediários atendem suas necessidades!',
-      benefits: [
-        'Planos de saúde com desconto especial',
-        'Educação continuada e pós-graduação',
-        'Lazer em família e viagens',
-        'Consultoria financeira gratuita'
-      ],
-      color: 'secondary',
-      bgColor: 'bg-aspc-secondary/10',
-      textColor: 'text-aspc-secondary'
-    },
-    lider: {
-      title: 'Servidor Premium',
-      subtitle: 'Benefícios premium e exclusivos',
-      description: 'Você está em posição de liderança e busca benefícios diferenciados. Nossos serviços premium são ideais para você!',
-      benefits: [
-        'Experiências VIP e eventos exclusivos',
-        'Consultoria de investimentos personalizada',
-        'Seguros com condições especiais',
-        'Networking e desenvolvimento executivo'
-      ],
-      color: 'primary',
-      bgColor: 'bg-aspc-primary/20',
-      textColor: 'text-aspc-primary'
+  const getProfileByEconomy = (totalEconomy) => {
+    if (totalEconomy <= 3000) {
+      return {
+        title: 'Perfil Econômico',
+        subtitle: 'Economia focada no essencial',
+        description: 'Baseado no seu perfil, você pode economizar focando em benefícios essenciais do dia a dia.',
+        benefits: [
+          'Descontos em farmácias e supermercados',
+          'Economia em serviços básicos de saúde',
+          'Parcerias para necessidades cotidianas',
+          'Benefícios em transporte e combustível'
+        ],
+        color: 'primary',
+        bgColor: 'bg-aspc-primary/10',
+        textColor: 'text-aspc-primary'
+      }
+    } else if (totalEconomy <= 6000) {
+      return {
+        title: 'Perfil Equilibrado',
+        subtitle: 'Economia com qualidade de vida',
+        description: 'Seu perfil indica um bom potencial de economia balanceando necessidades e qualidade de vida.',
+        benefits: [
+          'Descontos significativos em saúde e educação',
+          'Benefícios em lazer e entretenimento familiar',
+          'Parcerias em atividades físicas e bem-estar',
+          'Economia em serviços especializados'
+        ],
+        color: 'secondary',
+        bgColor: 'bg-aspc-secondary/10',
+        textColor: 'text-aspc-secondary'
+      }
+    } else {
+      return {
+        title: 'Perfil Premium',
+        subtitle: 'Máxima economia e benefícios',
+        description: 'Seu perfil de consumo permite aproveitar ao máximo todos os benefícios da ASPC!',
+        benefits: [
+          'Economia substancial em educação e cursos',
+          'Benefícios premium em saúde e bem-estar',
+          'Descontos exclusivos em lazer e viagens',
+          'Acesso a parcerias especiais e experiências VIP'
+        ],
+        color: 'primary',
+        bgColor: 'bg-aspc-primary/20',
+        textColor: 'text-aspc-primary'
+      }
     }
   }
 
@@ -119,26 +144,34 @@ const PersonaQuiz = () => {
   }
 
   const calculateResult = (finalAnswers) => {
-    const scores = { essencial: 0, estavel: 0, lider: 0 }
+    let totalEconomy = 0
+    const economyBreakdown = []
 
     questions.forEach(question => {
       const answer = finalAnswers[question.id]
       const option = question.options.find(opt => opt.value === answer)
-      if (option) {
-        Object.keys(option.points).forEach(persona => {
-          scores[persona] += option.points[persona]
+      if (option && option.economy > 0) {
+        totalEconomy += option.economy
+        economyBreakdown.push({
+          category: question.question,
+          choice: option.label,
+          economy: option.economy
         })
       }
     })
 
-    const winnerPersona = Object.keys(scores).reduce((a, b) => 
-      scores[a] > scores[b] ? a : b
-    )
+    const associationFee = 182.16 // R$ 15,18/mês * 12 meses
+    const netEconomy = totalEconomy - associationFee
+    const roi = ((netEconomy / associationFee) * 100)
+    const profile = getProfileByEconomy(totalEconomy)
 
     setResult({
-      persona: winnerPersona,
-      scores,
-      details: personas[winnerPersona]
+      totalEconomy,
+      netEconomy,
+      associationFee,
+      roi,
+      economyBreakdown,
+      profile
     })
   }
 
@@ -200,50 +233,76 @@ const PersonaQuiz = () => {
             </div>
           ) : (
             <div className="space-y-6">
+              {/* Resumo da Economia */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-green-50 p-4 rounded-lg text-center">
+                  <div className="text-2xl font-bold text-green-600 font-raleway">
+                    R$ {result.totalEconomy.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                  </div>
+                  <div className="text-sm text-green-700 font-raleway">Economia Anual Estimada</div>
+                </div>
+                
+                <div className="bg-blue-50 p-4 rounded-lg text-center">
+                  <div className="text-2xl font-bold text-blue-600 font-raleway">
+                    R$ {result.netEconomy.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                  </div>
+                  <div className="text-sm text-blue-700 font-raleway">Lucro Líquido Anual</div>
+                </div>
+                
+                <div className="bg-purple-50 p-4 rounded-lg text-center">
+                  <div className="text-2xl font-bold text-purple-600 font-raleway">
+                    {result.roi.toFixed(0)}%
+                  </div>
+                  <div className="text-sm text-purple-700 font-raleway">Retorno do Investimento</div>
+                </div>
+              </div>
+
               {/* Resultado */}
-              <div className={`${result.details.bgColor} rounded-lg p-6 text-center`}>
-                <h3 className={`text-2xl font-bold ${result.details.textColor} mb-2 font-raleway`}>
-                  {result.details.title}
+              <div className={`${result.profile.bgColor} rounded-lg p-6 text-center`}>
+                <h3 className={`text-2xl font-bold ${result.profile.textColor} mb-2 font-raleway`}>
+                  {result.profile.title}
                 </h3>
-                <p className={`text-lg ${result.details.textColor} mb-4 font-raleway`}>
-                  {result.details.subtitle}
+                <p className={`text-lg ${result.profile.textColor} mb-4 font-raleway`}>
+                  {result.profile.subtitle}
                 </p>
                 <p className="text-aspc-dark/70 font-raleway">
-                  {result.details.description}
+                  {result.profile.description}
                 </p>
               </div>
 
               {/* Benefícios */}
               <div>
-                <h4 className="text-lg font-semibold mb-4 font-raleway">Benefícios recomendados para você:</h4>
+                <h4 className="text-lg font-semibold mb-4 font-raleway">Benefícios do seu perfil:</h4>
                 <div className="space-y-3">
-                  {result.details.benefits.map((benefit, index) => (
+                  {result.profile.benefits.map((benefit, index) => (
                     <div key={index} className="flex items-center space-x-3">
-                      <CheckCircle className={`h-5 w-5 ${result.details.textColor}`} />
+                      <CheckCircle className={`h-5 w-5 ${result.profile.textColor}`} />
                       <span className="text-aspc-dark font-raleway">{benefit}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Pontuações */}
+              {/* Detalhamento da Economia */}
               <div className="bg-aspc-light rounded-lg p-4">
-                <h4 className="text-sm font-medium text-aspc-dark/70 mb-3 font-raleway">Suas pontuações:</h4>
+                <h4 className="text-sm font-medium text-aspc-dark/70 mb-3 font-raleway">Detalhamento da economia:</h4>
                 <div className="space-y-2">
-                  {Object.entries(result.scores).map(([persona, score]) => (
-                    <div key={persona} className="flex justify-between items-center">
-                      <span className="text-sm capitalize font-raleway">{personas[persona].title}</span>
-                      <div className="flex items-center space-x-2">
-                        <div className="w-20 bg-aspc-white rounded-full h-2">
-                          <div 
-                            className={`h-2 rounded-full ${persona === result.persona ? 'bg-aspc-primary' : 'bg-aspc-dark/30'}`}
-                            style={{ width: `${(score / 15) * 100}%` }}
-                          ></div>
-                        </div>
-                        <span className="text-sm font-medium font-raleway">{score}</span>
-                      </div>
+                  {result.economyBreakdown.map((item, index) => (
+                    <div key={index} className="flex justify-between items-center text-sm">
+                      <span className="text-aspc-dark/70 font-raleway">{item.choice}</span>
+                      <span className="font-medium text-green-600 font-raleway">
+                        +R$ {item.economy.toLocaleString('pt-BR')}
+                      </span>
                     </div>
                   ))}
+                  <div className="border-t pt-2 mt-2">
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-aspc-dark/70 font-raleway">Taxa Associativa Anual</span>
+                      <span className="font-medium text-red-600 font-raleway">
+                        -R$ {result.associationFee.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
