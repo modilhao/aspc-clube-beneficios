@@ -8,6 +8,13 @@ const EconomySimulator = () => {
   const [result, setResult] = useState(null)
   const [isCalculating, setIsCalculating] = useState(false)
 
+  const scrollToAssociation = () => {
+    const associationSection = document.getElementById('como-associar')
+    if (associationSection) {
+      associationSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   // Base de dados dos parceiros reais
   const servicesData = {
     lazer: {
@@ -136,6 +143,17 @@ const EconomySimulator = () => {
     const hasSelectedServices = Object.values(selectedServices).some(selected => selected)
     if (hasSelectedServices) {
       calculateEconomy()
+      
+      // Navegar suavemente para o resultado após o cálculo
+      setTimeout(() => {
+        const resultElement = document.getElementById('resultado-economia')
+        if (resultElement) {
+          resultElement.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          })
+        }
+      }, 1100)
     }
   }
 
@@ -235,7 +253,7 @@ const EconomySimulator = () => {
                 </div>
               </div>
             ) : (
-              <div className="space-y-6">
+              <div id="resultado-economia" className="space-y-6">
                 {/* Resultado Principal */}
                 <div className="bg-gradient-to-r from-aspc-secondary to-aspc-secondary/90 text-aspc-white rounded-lg p-6 text-center">
                   <h3 className="text-2xl font-bold mb-4 font-raleway">📊 RESULTADO PERSONALIZADO</h3>
@@ -328,7 +346,11 @@ const EconomySimulator = () => {
                   <Button onClick={resetSimulator} variant="outline" className="flex-1 border-aspc-primary text-aspc-primary hover:bg-aspc-primary hover:text-aspc-white font-raleway font-semibold">
                     Nova Simulação
                   </Button>
-                  <Button variant="gradient" className="flex-1 font-raleway font-semibold">
+                  <Button 
+                    variant="gradient" 
+                    className="flex-1 font-raleway font-semibold"
+                    onClick={scrollToAssociation}
+                  >
                     Quero me Associar
                   </Button>
                 </div>

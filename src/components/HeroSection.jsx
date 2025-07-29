@@ -2,6 +2,20 @@ import { Button } from '@/components/ui/button.jsx'
 import { ArrowRight, Calculator } from 'lucide-react'
 
 const HeroSection = () => {
+  const scrollToBeneficios = () => {
+    const beneficiosSection = document.getElementById('beneficios')
+    if (beneficiosSection) {
+      beneficiosSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const scrollToAssociation = () => {
+    const associationSection = document.getElementById('como-associar')
+    if (associationSection) {
+      associationSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <section id="inicio" className="bg-gradient-to-br from-aspc-primary via-aspc-primary/90 to-aspc-primary/80 text-aspc-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
@@ -24,6 +38,7 @@ const HeroSection = () => {
                 size="lg" 
                 variant="gradient"
                 className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold font-raleway"
+                onClick={scrollToAssociation}
               >
                 Quero me associar
                 <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
@@ -31,6 +46,7 @@ const HeroSection = () => {
               <Button 
                 size="lg" 
                 variant="outline" 
+                onClick={scrollToBeneficios}
                 className="border-aspc-white text-aspc-white hover:bg-aspc-white hover:text-aspc-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold font-raleway"
               >
                 <Calculator className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />

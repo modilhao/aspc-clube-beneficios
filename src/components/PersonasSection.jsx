@@ -5,6 +5,14 @@ import PersonaQuiz from './PersonaQuiz'
 import EconomySimulator from './EconomySimulator'
 
 const PersonasSection = ({ onNavigateToPartners }) => {
+  const whatsappLink = "https://api.whatsapp.com/send/?phone=5511915175471&text&type=phone_number&app_absent=0"
+  
+  const scrollToAssociation = () => {
+    const associationSection = document.getElementById('como-associar')
+    if (associationSection) {
+      associationSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
   return (
     <section id="beneficios" className="py-20 bg-gradient-to-br from-aspc-light to-aspc-primary/10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -123,10 +131,20 @@ const PersonasSection = ({ onNavigateToPartners }) => {
               Junte-se aos centenas de servidores que já estão aproveitando os benefícios da ASPC
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="gradient" className="font-raleway font-semibold">
+              <Button 
+                size="lg" 
+                variant="gradient" 
+                className="font-raleway font-semibold"
+                onClick={scrollToAssociation}
+              >
                 Quero me Associar
               </Button>
-              <Button size="lg" variant="outline" className="border-aspc-white text-aspc-white hover:bg-aspc-white hover:text-aspc-primary font-raleway font-semibold">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-aspc-white text-aspc-white hover:bg-aspc-white hover:text-aspc-primary font-raleway font-semibold"
+                onClick={() => window.open(whatsappLink, '_blank')}
+              >
                 Falar com Consultor
               </Button>
             </div>

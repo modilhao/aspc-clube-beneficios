@@ -4,6 +4,7 @@ import HeroSection from './components/HeroSection.jsx'
 import PersonasSection from './components/PersonasSection.jsx'
 import InteractiveSection from './components/InteractiveSection.jsx'
 import TestimonialsSection from './components/TestimonialsSection.jsx'
+import AssociationSection from './components/AssociationSection.jsx'
 import Footer from './components/Footer.jsx'
 import Parceiros from './pages/Parceiros.jsx'
 import './App.css'
@@ -31,6 +32,7 @@ function App() {
         <PersonasSection onNavigateToPartners={navigateToPartners} />
         <InteractiveSection onNavigateToPartners={navigateToPartners} />
         <TestimonialsSection />
+        <AssociationSection />
       </main>
       <Footer />
     </div>

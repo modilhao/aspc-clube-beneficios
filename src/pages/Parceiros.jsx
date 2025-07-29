@@ -4,10 +4,17 @@ import { partnersData, categories, regions, filterPartners, getPartnerStats } fr
 import { Button } from '../components/ui/button';
 
 const Parceiros = ({ onBack }) => {
-  const [selectedCategory, setSelectedCategory] = useState('Todos');
-  const [selectedRegion, setSelectedRegion] = useState('Todas');
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('Todas');
+  const [selectedRegion, setSelectedRegion] = useState('Todas');
   const [showFilters, setShowFilters] = useState(false);
+
+  const scrollToAssociation = () => {
+    const associationSection = document.getElementById('como-associar')
+    if (associationSection) {
+      associationSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   // Filtrar parceiros baseado nos critérios selecionados
   const filteredPartners = useMemo(() => {
@@ -220,7 +227,11 @@ const Parceiros = ({ onBack }) => {
           <p className="text-aspc-dark/70 mb-6 max-w-2xl mx-auto font-raleway">
             Torne-se um associado ASPC e tenha acesso a todos esses descontos exclusivos e muito mais!
           </p>
-          <Button variant="gradient" className="font-raleway font-semibold">
+          <Button 
+            variant="gradient" 
+            className="font-raleway font-semibold"
+            onClick={scrollToAssociation}
+          >
             Quero me Associar
           </Button>
         </div>

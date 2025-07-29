@@ -2,11 +2,34 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button.jsx'
 import { Menu, X } from 'lucide-react'
 
-const Header = () => {
+const Header = ({ onNavigateToPartners }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
+  }
+
+  const scrollToBeneficios = () => {
+    const beneficiosSection = document.getElementById('beneficios')
+    if (beneficiosSection) {
+      beneficiosSection.scrollIntoView({ behavior: 'smooth' })
+    }
+    setIsMenuOpen(false) // Fechar menu após clique
+  }
+
+  const scrollToAssociation = () => {
+    const associationSection = document.getElementById('como-associar')
+    if (associationSection) {
+      associationSection.scrollIntoView({ behavior: 'smooth' })
+    }
+    setIsMenuOpen(false) // Fechar menu após clique
+  }
+
+  const handlePartnersClick = () => {
+    if (onNavigateToPartners) {
+      onNavigateToPartners()
+    }
+    setIsMenuOpen(false) // Fechar menu mobile após clique
   }
 
   return (
@@ -26,31 +49,18 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            <a href="#inicio" className="text-aspc-dark hover:text-aspc-primary px-3 py-2 text-sm font-medium transition-colors font-raleway">
-              Início
-            </a>
-            <a href="#beneficios" className="text-aspc-dark hover:text-aspc-primary px-3 py-2 text-sm font-medium transition-colors font-raleway">
-              Benefícios
-            </a>
-            <a href="#como-associar" className="text-aspc-dark hover:text-aspc-primary px-3 py-2 text-sm font-medium transition-colors font-raleway">
-              Como Associar-se
-            </a>
-            <a href="#contato" className="text-aspc-dark hover:text-aspc-primary px-3 py-2 text-sm font-medium transition-colors font-raleway">
-              Contato
-            </a>
-          </nav>
-
-          {/* CTA Button */}
-          <div className="hidden md:flex">
-            <Button variant="gradient" className="font-raleway font-semibold">
+          {/* Desktop CTA Button and Menu */}
+          <div className="flex items-center space-x-4">
+            {/* CTA Button - sempre visível */}
+            <Button 
+              variant="gradient" 
+              className="font-raleway font-semibold"
+              onClick={scrollToAssociation}
+            >
               Associe-se Agora
             </Button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+            
+            {/* Menu button - agora também no desktop */}
             <button
               onClick={toggleMenu}
               className="text-aspc-dark hover:text-aspc-primary p-2"
@@ -60,26 +70,32 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Menu Navigation - agora funciona tanto no mobile quanto no desktop */}
         {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-aspc-white border-t border-aspc-light">
-              <a href="#inicio" className="block px-3 py-2 text-base font-medium text-aspc-dark hover:text-aspc-primary font-raleway">
-                Início
-              </a>
-              <a href="#beneficios" className="block px-3 py-2 text-base font-medium text-aspc-dark hover:text-aspc-primary font-raleway">
-                Benefícios
-              </a>
-              <a href="#como-associar" className="block px-3 py-2 text-base font-medium text-aspc-dark hover:text-aspc-primary font-raleway">
-                Como Associar-se
-              </a>
-              <a href="#contato" className="block px-3 py-2 text-base font-medium text-aspc-dark hover:text-aspc-primary font-raleway">
-                Contato
-              </a>
-              <div className="px-3 py-2">
-                <Button className="w-full bg-aspc-secondary hover:bg-aspc-secondary/90 text-aspc-white font-raleway font-semibold">
-                  Associe-se Agora
-                </Button>
+          <div className="absolute top-full left-0 right-0 bg-aspc-white shadow-lg border-t border-aspc-light z-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="py-4 space-y-2">
+                <button 
+                  onClick={handlePartnersClick}
+                  className="block w-full text-left px-3 py-3 text-base font-medium text-aspc-dark hover:text-aspc-primary hover:bg-aspc-light/50 rounded-lg transition-colors font-raleway"
+                >
+                  Nossos Parceiros
+                </button>
+                <button 
+                  onClick={scrollToBeneficios}
+                  className="block w-full text-left px-3 py-3 text-base font-medium text-aspc-dark hover:text-aspc-primary hover:bg-aspc-light/50 rounded-lg transition-colors font-raleway"
+                >
+                  Veja os benefícios
+                </button>
+                {/* Botão adicional no menu mobile */}
+                 <div className="px-3 py-2 md:hidden">
+                   <Button 
+                     className="w-full bg-aspc-secondary hover:bg-aspc-secondary/90 text-aspc-white font-raleway font-semibold"
+                     onClick={scrollToAssociation}
+                   >
+                     Associe-se Agora
+                   </Button>
+                 </div>
               </div>
             </div>
           </div>
